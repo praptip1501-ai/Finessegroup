@@ -1,0 +1,191 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Workstation 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/workstation\n"
+"POT-Creation-Date: 2026-03-17 06:00:00+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"X-Generator: GlotPress/3.0.0-alpha.2\n"
+
+#: 404.php:14
+msgctxt "error page title"
+msgid "Oops! That page can't be found."
+msgstr ""
+
+#: 404.php:20
+msgid "It looks like nothing was found at this location. Maybe try one of the links below or a search?"
+msgstr ""
+
+#: comments.php:18
+msgid "One thought on &ldquo;"
+msgstr ""
+
+#: comments.php:22
+msgctxt "comments title"
+msgid "%1$s thought on &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
+msgstr[0] ""
+msgstr[1] ""
+
+#: comments.php:42
+msgid "Older Comments"
+msgstr ""
+
+#: comments.php:43
+msgid "Newer Comments"
+msgstr ""
+
+#: comments.php:51
+msgid "Comments are closed."
+msgstr ""
+
+#: comments.php:79
+msgid "says:"
+msgstr ""
+
+#: comments.php:87
+msgid "%1$s at %2$s"
+msgstr ""
+
+#: comments.php:100
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: footer.php:15
+msgid "All rights reserved."
+msgstr ""
+
+#: footer.php:22
+msgid "Theme: %s"
+msgstr ""
+
+#: functions.php:37
+msgid "Primary Menu"
+msgstr ""
+
+#: functions.php:38
+msgid "Footer Menu"
+msgstr ""
+
+#: functions.php:52
+msgid "Sidebar"
+msgstr ""
+
+#: functions.php:59
+msgid "Main sidebar"
+msgstr ""
+
+#: functions.php:67
+msgid "Footer Widget 1"
+msgstr ""
+
+#: functions.php:74
+msgid "Footer widget area 1"
+msgstr ""
+
+#: functions.php:82
+msgid "Footer Widget 2"
+msgstr ""
+
+#: functions.php:89
+msgid "Footer widget area 2"
+msgstr ""
+
+#: functions.php:97
+msgid "Footer Widget 3"
+msgstr ""
+
+#: functions.php:104
+msgid "Footer widget area 3"
+msgstr ""
+
+#: header.php:24
+msgid "Skip to content"
+msgstr ""
+
+#: header.php:42
+msgid "Primary Menu"
+msgstr ""
+
+#: header.php:51
+msgid "Menu"
+msgstr ""
+
+#: search.php:16
+msgid "Search Results for: %s"
+msgstr ""
+
+#: sidebar.php:9
+msgid "Sidebar"
+msgstr ""
+
+#: template-parts/content.php:23
+msgid "by"
+msgstr ""
+
+#: template-parts/content.php:39
+msgid "Read More"
+msgstr ""
+
+#: inc/customizer.php:21
+msgid "Primary Color"
+msgstr ""
+
+#: inc/customizer.php:34
+msgid "Blog Settings"
+msgstr ""
+
+#: inc/customizer.php:35
+msgid "Customize blog appearance and behavior"
+msgstr ""
+
+#: inc/customizer.php:45
+msgid "Posts Per Page"
+msgstr ""
+
+#: inc/customizer.php:46
+msgid "Number of posts to display per page on blog archive"
+msgstr ""
+
+#: inc/customizer.php:59
+msgid "Show Featured Images"
+msgstr ""
+
+#: inc/customizer.php:60
+msgid "Display featured images on post cards in blog archives"
+msgstr ""
+
+#: inc/customizer.php:70
+msgid "Typography"
+msgstr ""
+
+#: inc/customizer.php:71
+msgid "Customize fonts and text colors"
+msgstr ""
+
+#: inc/customizer.php:80
+msgid "Heading Color"
+msgstr ""
+
+#: inc/customizer.php:91
+msgid "Footer Settings"
+msgstr ""
+
+#: inc/customizer.php:92
+msgid "Customize footer content and layout"
+msgstr ""
+
+#: inc/customizer.php:102
+msgid "Footer Copyright Text"
+msgstr ""
+
+#: inc/customizer.php:103
+msgid "HTML allowed. Displays in footer credits area"
+msgstr ""

@@ -1,0 +1,46 @@
+/**
+ * Finesse Stats Strip Styles
+ */
+
+.stats-strip {
+  background: #fff;
+  padding: 0 0 100px;
+}
+
+.g-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px;
+}
+
+.stat-item {
+  position: relative;
+}
+
+.stat-line {
+  height: 1px;
+  background: #000;
+  margin-bottom: 24px;
+}
+
+.stat-num {
+  font-family: var(--fin-font-main, 'Barlow', sans-serif);
+  font-size: 64px;
+  font-weight: 300;
+  line-height: 1;
+  color: #000;
+}
+
+.stat-label {
+  margin: 10px 0 0;
+  font-size: 14px;
+  color: #4A4A4A;
+  line-height: 1.5;
+}
+
+@media (max-width: 960px) {
+  .g-stats {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 40px;
+  }
+}
