@@ -387,7 +387,7 @@
           pick: () => { if (j !== i) go(j); }
         })),
         ovList: S.map((s, j) => ({
-          id: s.id, n: String(j + 1).padStart(2, '0'), name: s.name, line: s.tag || s.desc || lines[s.id],
+          id: s.id, n: String(j + 1).padStart(2, '0'), name: s.name, line: s.tag || s.desc || lines[s.id] || '',
           pick: () => go(j)
         })),
         prev: () => go(i - 1),
@@ -413,7 +413,7 @@
   }
 
   const $ = (id) => document.getElementById(id);
-  const esc = (t) => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  const esc = (t) => (t !== undefined && t !== null) ? String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;') : '';
   const c = new Component({});
   let vals = null;
   let lastKey = '';

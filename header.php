@@ -65,14 +65,14 @@ $header_btn_url  = get_theme_mod( 'finesse_header_btn_url', '#contact' );
 					'theme_location' => 'primary',
 					'menu_class'     => 'navlinks',
 					'container'      => false,
-					'depth'          => 1,
+					'depth'          => 0,
 				) );
 			} elseif ( has_nav_menu( 'finesse-primary' ) ) {
 				wp_nav_menu( array(
 					'theme_location' => 'finesse-primary',
 					'menu_class'     => 'navlinks',
 					'container'      => false,
-					'depth'          => 1,
+					'depth'          => 0,
 				) );
 			} else {
 				// Default Finesse Section Anchors matching original design
@@ -113,7 +113,7 @@ $header_btn_url  = get_theme_mod( 'finesse_header_btn_url', '#contact' );
 				'theme_location' => has_nav_menu( 'primary' ) ? 'primary' : 'finesse-primary',
 				'menu_class'     => 'mobile-navlinks',
 				'container'      => false,
-				'depth'          => 1,
+				'depth'          => 0,
 			) );
 		} else {
 			?>

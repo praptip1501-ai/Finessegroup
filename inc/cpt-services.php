@@ -32,18 +32,22 @@ function finesse_register_services_cpt() {
 
 	$args = array(
 		'labels'             => $labels,
-		'public'             => false,
-		'publicly_queryable' => false,
+		'public'             => true,
+		'publicly_queryable' => true,
 		'show_ui'            => true,
 		'show_in_menu'       => true,
-		'query_var'          => false,
-		'rewrite'            => false,
-		'capability_type'    => 'post',
-		'has_archive'        => false,
+		'show_in_nav_menus'  => true,
+		'query_var'          => true,
+		'rewrite'            => array(
+			'slug'       => 'services',
+			'with_front' => false,
+		),
+		'capability_type'    => 'page',
+		'has_archive'        => 'services',
 		'hierarchical'       => false,
 		'menu_position'      => 20,
 		'menu_icon'          => 'dashicons-hammer',
-		'supports'           => array( 'title', 'thumbnail' ),
+		'supports'           => array( 'title', 'editor', 'thumbnail', 'excerpt' ),
 		'show_in_rest'       => false,
 	);
 
@@ -311,75 +315,12 @@ function finesse_service_save_meta( $post_id ) {
 add_action( 'save_post_finesse_service', 'finesse_service_save_meta' );
 
 /**
- * Helper to get all services formatted for frontend Explorer JS
+ * Helper to get all services formatted for frontend Explorer JS and Services Index.
+ * Always returns the full service suite (1-6 plus customizer overrides) so the homepage
+ * sections stay intact and independent of individual WordPress pages.
  */
 function finesse_get_services_explorer_data() {
-	$query = new WP_Query( array(
-		'post_type'      => 'finesse_service',
-		'posts_per_page' => 10,
-		'orderby'        => 'meta_value_num',
-		'meta_key'       => '_service_order',
-		'order'          => 'ASC',
-	) );
-
-	if ( ! $query->have_posts() ) {
-		return finesse_get_default_services_data();
-	}
-
-	$services = array();
-
-	while ( $query->have_posts() ) {
-		$query->the_post();
-		$post_id = get_the_ID();
-
-		$best_raw = get_post_meta( $post_id, '_service_best_uses', true );
-		$best_arr = array_filter( array_map( 'trim', explode( "\n", str_replace( "\r", '', $best_raw ) ) ) );
-
-		$steps = array();
-		for ( $s = 1; $s <= 5; $s++ ) {
-			$title = get_post_meta( $post_id, "_service_step_{$s}_title", true );
-			$desc  = get_post_meta( $post_id, "_service_step_{$s}_desc", true );
-			$look  = get_post_meta( $post_id, "_service_step_{$s}_look", true ) ?: 'raw';
-			$sheen = floatval( get_post_meta( $post_id, "_service_step_{$s}_sheen", true ) );
-			$solid = get_post_meta( $post_id, "_service_step_{$s}_solid_color", true );
-
-			$step_data = array(
-				't'     => $title,
-				'd'     => $desc,
-				'look'  => $look,
-				'sheen' => $sheen,
-			);
-			if ( 'solid' === $look && $solid ) {
-				$step_data['solid'] = $solid;
-			}
-			$steps[] = $step_data;
-		}
-
-		$specs = array();
-		for ( $k = 1; $k <= 3; $k++ ) {
-			$lbl = get_post_meta( $post_id, "_service_spec_{$k}_key", true );
-			$val = get_post_meta( $post_id, "_service_spec_{$k}_value", true );
-			if ( $lbl && $val ) {
-				$specs[] = array( 'k' => $lbl, 'v' => $val );
-			}
-		}
-
-		$services[] = array(
-			'id'    => get_post_meta( $post_id, '_service_id_slug', true ) ?: sanitize_title( get_the_title() ),
-			'short' => get_post_meta( $post_id, '_service_short_name', true ) ?: get_the_title(),
-			'word'  => get_post_meta( $post_id, '_service_display_word', true ) ?: get_the_title(),
-			'tag'   => get_post_meta( $post_id, '_service_tag', true ),
-			'name'  => get_the_title(),
-			'desc'  => get_post_meta( $post_id, '_service_description', true ),
-			'best'  => ! empty( $best_arr ) ? array_values( $best_arr ) : array(),
-			'specs' => $specs,
-			'base'  => get_post_meta( $post_id, '_service_base_color', true ) ?: '#958F85',
-			'steps' => $steps,
-		);
-	}
-	wp_reset_postdata();
-
-	return $services;
+	return finesse_get_default_services_data();
 }
 
 /**
