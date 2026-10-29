@@ -11,7 +11,6 @@ $hours_text  = get_theme_mod( 'finesse_footer_hours', "Mon – Fri 7:00 – 17:0
 $watermark   = get_theme_mod( 'finesse_footer_watermark', 'FINESSE' );
 ?>
 
-<?php if ( ! is_singular( 'finesse_service' ) ) : ?>
 <footer id="colophon" class="fin-footer" role="contentinfo">
 	<div class="wrap">
 		<div class="g-foot">
@@ -111,7 +110,6 @@ $watermark   = get_theme_mod( 'finesse_footer_watermark', 'FINESSE' );
 		<a class="flink" href="#top"><?php esc_html_e( 'Back to top ↑', 'workstation' ); ?></a>
 	</div>
 </footer>
-<?php endif; ?>
 
 </div><!-- #root -->
 
