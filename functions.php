@@ -129,7 +129,7 @@ function workstation_enqueue_scripts() {
 	);
 
 	// Finesse Global Design System & Layout
-	wp_enqueue_style( 'finesse-base', get_template_directory_uri() . '/assets/css/finesse-base.css', array(), $theme_version, 'all' );
+	wp_enqueue_style( 'finesse-base', get_template_directory_uri() . '/assets/css/finesse-base.css', array(), filemtime( get_template_directory() . '/assets/css/finesse-base.css' ), 'all' );
 	wp_enqueue_style( 'finesse-header', get_template_directory_uri() . '/assets/css/finesse-header.css', array( 'finesse-base' ), filemtime( get_template_directory() . '/assets/css/finesse-header.css' ), 'all' );
 	wp_enqueue_style( 'finesse-footer', get_template_directory_uri() . '/assets/css/finesse-footer.css', array( 'finesse-base' ), $theme_version, 'all' );
 	wp_enqueue_script( 'finesse-header', get_template_directory_uri() . '/assets/js/finesse-header.js', array(), $theme_version, array( 'in_footer' => true, 'strategy' => 'defer' ) );
@@ -139,7 +139,7 @@ function workstation_enqueue_scripts() {
 		wp_enqueue_style( 'finesse-hero', get_template_directory_uri() . '/assets/css/finesse-hero.css', array( 'finesse-base' ), $theme_version, 'all' );
 		wp_enqueue_style( 'finesse-intro', get_template_directory_uri() . '/assets/css/finesse-intro.css', array( 'finesse-base' ), $theme_version, 'all' );
 		wp_enqueue_style( 'finesse-stats', get_template_directory_uri() . '/assets/css/finesse-stats.css', array( 'finesse-base' ), $theme_version, 'all' );
-		wp_enqueue_style( 'finesse-services', get_template_directory_uri() . '/assets/css/finesse-services.css', array( 'finesse-base' ), $theme_version, 'all' );
+		wp_enqueue_style( 'finesse-services', get_template_directory_uri() . '/assets/css/finesse-services.css', array( 'finesse-base' ), filemtime( get_template_directory() . '/assets/css/finesse-services.css' ), 'all' );
 		wp_enqueue_style( 'finesse-compare', get_template_directory_uri() . '/assets/css/finesse-compare.css', array( 'finesse-base' ), $theme_version, 'all' );
 		wp_enqueue_style( 'finesse-fullbleed', get_template_directory_uri() . '/assets/css/finesse-fullbleed.css', array( 'finesse-base' ), $theme_version, 'all' );
 		wp_enqueue_style( 'finesse-projects', get_template_directory_uri() . '/assets/css/finesse-projects.css', array( 'finesse-base' ), $theme_version, 'all' );

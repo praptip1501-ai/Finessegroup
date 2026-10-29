@@ -487,3 +487,13 @@ a.btn.btn-b:hover,
     padding: 0 20px;
   }
 }
+
+/* Prevent theme default button pill/shadow styles from leaking into Finesse controls */
+.fin button:not(.btn):not(.pill) {
+  border-radius: 0;
+  box-shadow: none;
+}
+.fin button:not(.btn):not(.pill):hover {
+  box-shadow: none;
+  transform: none;
+}
