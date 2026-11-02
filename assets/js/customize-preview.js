@@ -100,4 +100,39 @@
 			$( '.site-description, .footer-description' ).text( to );
 		} );
 	} );
+
+	// Services Index (Section 5: "What we do") Live Preview
+	api( 'finesse_sidx_lbl', function( value ) {
+		value.bind( function( to ) {
+			$( '#what .wrap p.lbl' ).first().text( to );
+		} );
+	} );
+
+	api( 'finesse_sidx_title', function( value ) {
+		value.bind( function( to ) {
+			$( '#what h2' ).text( to );
+		} );
+	} );
+
+	api( 'finesse_sidx_desc', function( value ) {
+		value.bind( function( to ) {
+			$( '#what .wrap > div > p.rv' ).text( to );
+		} );
+	} );
+
+	for ( var i = 1; i <= 8; i++ ) {
+		( function( idx ) {
+			var rowIdx = idx - 1;
+			api( 'finesse_svc_' + idx + '_name', function( value ) {
+				value.bind( function( to ) {
+					$( '#ovList [data-i="' + rowIdx + '"] .sname' ).text( to );
+				} );
+			} );
+			api( 'finesse_svc_' + idx + '_desc', function( value ) {
+				value.bind( function( to ) {
+					$( '#ovList [data-i="' + rowIdx + '"] .sdesc' ).text( to );
+				} );
+			} );
+		} )( i );
+	}
 })( wp.customize, jQuery );

@@ -80,11 +80,17 @@ body {
 .fin-footer,
 .fin-footer h2,
 .fin-footer h3 {
-  color: #fff !important;
+  color: #E6E6E6 !important;
+}
+
+.heroin h1 {
+  font-family: 'Montserrat';
+  font-weight: 400;
 }
 
 a.btn.btn-b.rv {
   color: #fff;
+  border-color: #fff !important;
 }
 
 a.btn.btn-b.rv:hover {
@@ -96,7 +102,7 @@ a.btn.btn-w:hover {
 }
 
 .fin a:hover {
-  color: #fff;
+  color: #000;
 }
 
 .wrap {
@@ -224,7 +230,7 @@ a.btn.btn-b,
 .fin a.btn.btn-b {
   background: #000 !important;
   color: #fff !important;
-  border-color: #000 !important;
+  border-color: #000;
 }
 
 .btn-b:hover,

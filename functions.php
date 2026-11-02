@@ -143,7 +143,7 @@ function workstation_enqueue_scripts() {
 		wp_enqueue_style( 'finesse-compare', get_template_directory_uri() . '/assets/css/finesse-compare.css', array( 'finesse-base' ), $theme_version, 'all' );
 		wp_enqueue_style( 'finesse-fullbleed', get_template_directory_uri() . '/assets/css/finesse-fullbleed.css', array( 'finesse-base' ), $theme_version, 'all' );
 		wp_enqueue_style( 'finesse-projects', get_template_directory_uri() . '/assets/css/finesse-projects.css', array( 'finesse-base' ), $theme_version, 'all' );
-		wp_enqueue_style( 'finesse-contact', get_template_directory_uri() . '/assets/css/finesse-contact.css', array( 'finesse-base' ), $theme_version, 'all' );
+		wp_enqueue_style( 'finesse-contact', get_template_directory_uri() . '/assets/css/finesse-contact.css', array( 'finesse-base' ), filemtime( get_template_directory() . '/assets/css/finesse-contact.css' ), 'all' );
 
 		wp_enqueue_script( 'finesse-hero', get_template_directory_uri() . '/assets/js/finesse-hero.js', array(), $theme_version, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_enqueue_script( 'finesse-explorer', get_template_directory_uri() . '/assets/js/finesse-explorer.js', array(), filemtime( get_template_directory() . '/assets/js/finesse-explorer.js' ), array( 'in_footer' => true, 'strategy' => 'defer' ) );
@@ -461,4 +461,27 @@ function workstation_sync_customizer_favicon() {
 	}
 }
 add_action( 'customize_save_after', 'workstation_sync_customizer_favicon' );
+
+/**
+ * Customize the document title separator (use | instead of -)
+ */
+function workstation_document_title_separator( $sep ) {
+	return '|';
+}
+add_filter( 'document_title_separator', 'workstation_document_title_separator' );
+
+/**
+ * Customize homepage / frontpage browser tab title
+ */
+function workstation_custom_document_title( $title ) {
+	if ( is_front_page() || is_home() ) {
+		$custom_title = get_theme_mod( 'finesse_seo_page_title', 'Finesse Grind & Polish | Concrete Grinding & Polishing Sydney' );
+		if ( ! empty( $custom_title ) ) {
+			return $custom_title;
+		}
+	}
+	return $title;
+}
+add_filter( 'pre_get_document_title', 'workstation_custom_document_title', 20 );
+
 

@@ -22,12 +22,26 @@ function finesse_customize_register( $wp_customize ) {
 		'priority'    => 25,
 	) );
 
-	// Favicon & Site Icon Section
+	// Favicon & Page Title Section
 	$wp_customize->add_section( 'finesse_favicon_section', array(
-		'title'       => esc_html__( 'Favicon & Site Icon', 'workstation' ),
+		'title'       => esc_html__( 'Favicon & Page Title', 'workstation' ),
 		'panel'       => 'finesse_panel',
 		'priority'    => 2,
-		'description' => esc_html__( 'Upload or customize the favicon displayed in browser tabs, bookmarks, and mobile shortcuts.', 'workstation' ),
+		'description' => esc_html__( 'Customize the browser tab title, favicon, and mobile icon.', 'workstation' ),
+	) );
+
+	$wp_customize->add_setting( 'finesse_seo_page_title', array(
+		'default'           => 'Finesse Grind & Polish | Concrete Grinding & Polishing Sydney',
+		'sanitize_callback' => 'sanitize_text_field',
+		'transport'         => 'refresh',
+	) );
+
+	$wp_customize->add_control( 'finesse_seo_page_title', array(
+		'label'       => esc_html__( 'Homepage Browser Tab Title', 'workstation' ),
+		'description' => esc_html__( 'Title displayed on the browser tab and search results for the home page.', 'workstation' ),
+		'section'     => 'finesse_favicon_section',
+		'type'        => 'text',
+		'priority'    => 5,
 	) );
 
 	$wp_customize->add_setting( 'finesse_favicon', array(
@@ -194,6 +208,7 @@ function finesse_customize_register( $wp_customize ) {
 
 	$wp_customize->add_setting( 'finesse_sidx_lbl', array(
 		'default'           => 'Services',
+		'transport'         => 'postMessage',
 		'sanitize_callback' => 'sanitize_text_field',
 	) );
 	$wp_customize->add_control( 'finesse_sidx_lbl', array(
@@ -204,6 +219,7 @@ function finesse_customize_register( $wp_customize ) {
 
 	$wp_customize->add_setting( 'finesse_sidx_title', array(
 		'default'           => 'What we do',
+		'transport'         => 'postMessage',
 		'sanitize_callback' => 'sanitize_text_field',
 	) );
 	$wp_customize->add_control( 'finesse_sidx_title', array(
@@ -214,6 +230,7 @@ function finesse_customize_register( $wp_customize ) {
 
 	$wp_customize->add_setting( 'finesse_sidx_desc', array(
 		'default'           => 'Six specialist concrete services. Select any service to see where it\'s used and exactly how we deliver it.',
+		'transport'         => 'postMessage',
 		'sanitize_callback' => 'sanitize_textarea_field',
 	) );
 	$wp_customize->add_control( 'finesse_sidx_desc', array(
@@ -271,6 +288,7 @@ function finesse_customize_register( $wp_customize ) {
 
 		$wp_customize->add_setting( "finesse_svc_{$idx}_name", array(
 			'default'           => $svc_conf['name'],
+			'transport'         => 'postMessage',
 			'sanitize_callback' => 'sanitize_text_field',
 		) );
 		$wp_customize->add_control( "finesse_svc_{$idx}_name", array(
@@ -281,6 +299,7 @@ function finesse_customize_register( $wp_customize ) {
 
 		$wp_customize->add_setting( "finesse_svc_{$idx}_desc", array(
 			'default'           => $svc_conf['desc'],
+			'transport'         => 'postMessage',
 			'sanitize_callback' => 'sanitize_textarea_field',
 		) );
 		$wp_customize->add_control( "finesse_svc_{$idx}_desc", array(

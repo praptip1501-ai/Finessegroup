@@ -33,7 +33,7 @@ $services = finesse_get_services_explorer_data();
 					<a class="srow" href="#services" data-act="ov" data-i="<?php echo esc_attr( $j ); ?>">
 						<span class="lbl snum"><?php echo esc_html( $num_str ); ?></span>
 						<span class="sname"><?php echo esc_html( $svc['name'] ); ?></span>
-						<span class="sdesc"><?php echo esc_html( $svc['tag'] ?: $svc['desc'] ); ?></span>
+						<span class="sdesc"><?php echo esc_html( ! empty( $svc['sidx_desc'] ) ? $svc['sidx_desc'] : ( ! empty( $svc['desc'] ) ? $svc['desc'] : $svc['tag'] ) ); ?></span>
 						<span class="sthumb sw sw-<?php echo esc_attr( $svc['id'] ); ?>" aria-hidden="true"></span>
 						<span class="sarr">
 							<svg width="22" height="22" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">

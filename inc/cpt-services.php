@@ -462,6 +462,16 @@ function finesse_get_default_services_data() {
 		),
 	);
 
+	// Services Index default descriptions for items 1-6
+	$sidx_defaults = array(
+		1 => 'Durable, low-maintenance polished finishes for homes, retail, offices and commercial spaces.',
+		2 => 'Natural concrete character under a durable protective sealer — a cost-effective finish.',
+		3 => 'Seamless, hand-applied finishes for floors, walls, bathrooms, fireplaces and feature surfaces.',
+		4 => 'Hard-wearing, seamless systems for garages, workshops, commercial and industrial spaces.',
+		5 => 'Decorative resurfacing for driveways, paths, patios and outdoor areas.',
+		6 => 'Grinding away adhesives, membranes and coatings to prepare for new flooring.',
+	);
+
 	// Apply Customizer overrides for Services 1-6 from "Services Index ("What we do")"
 	for ( $i = 1; $i <= 6; $i++ ) {
 		$idx = $i - 1;
@@ -472,8 +482,9 @@ function finesse_get_default_services_data() {
 		}
 		$desc_mod = get_theme_mod( "finesse_svc_{$i}_desc" );
 		if ( ! empty( $desc_mod ) ) {
-			$services[ $idx ]['tag']  = $desc_mod;
-			$services[ $idx ]['desc'] = $desc_mod;
+			$services[ $idx ]['sidx_desc'] = $desc_mod;
+		} else {
+			$services[ $idx ]['sidx_desc'] = isset( $sidx_defaults[ $i ] ) ? $sidx_defaults[ $i ] : ( $services[ $idx ]['tag'] ?? '' );
 		}
 	}
 
@@ -511,16 +522,17 @@ function finesse_get_default_services_data() {
 		if ( ! empty( $name_mod ) ) {
 			$desc_mod = get_theme_mod( "finesse_svc_{$i}_desc", '' );
 			$services[] = array(
-				'id'    => 'custom-' . $i,
-				'short' => $name_mod,
-				'word'  => $name_mod,
-				'name'  => $name_mod,
-				'tag'   => $desc_mod,
-				'desc'  => $desc_mod,
-				'best'  => array(),
-				'specs' => array(),
-				'base'  => '#958F85',
-				'steps' => array(),
+				'id'        => 'custom-' . $i,
+				'short'     => $name_mod,
+				'word'      => $name_mod,
+				'name'      => $name_mod,
+				'tag'       => $desc_mod,
+				'sidx_desc' => $desc_mod,
+				'desc'      => $desc_mod,
+				'best'      => array(),
+				'specs'     => array(),
+				'base'      => '#958F85',
+				'steps'     => array(),
 			);
 		}
 	}

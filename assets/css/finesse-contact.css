@@ -108,10 +108,60 @@
   appearance: none;
 }
 
+.field select,
+.contact-section select {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7' viewBox='0 0 12 7' fill='none'%3E%3Cpath d='M1 1l5 4.5 5-4.5' stroke='%23FFFFFF' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 4px center !important;
+  padding-right: 32px !important;
+}
+
+/* Dedicated wrapper for perfect cross-browser custom chevron */
+.select-wrap {
+  position: relative;
+  width: 100%;
+  display: block;
+}
+
+.select-wrap select {
+  background-image: none !important;
+  padding-right: 32px !important;
+  cursor: pointer;
+}
+
+.select-wrap .select-arrow {
+  position: absolute;
+  right: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #fff;
+  opacity: .9;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform .2s ease, opacity .2s ease;
+}
+
+.select-wrap:hover .select-arrow,
+.select-wrap select:focus + .select-arrow {
+  opacity: 1;
+}
+
+.select-wrap select:focus + .select-arrow {
+  transform: translateY(-50%) rotate(180deg);
+}
+
 .field select option,
 .wpcf7-form select option {
   color: #000;
   background: #fff;
+}
+
+.field select option[disabled],
+.field select option[value=""] {
+  color: #A3A3A3;
 }
 
 .field input:focus,
@@ -124,7 +174,6 @@
 .wpcf7 select:focus,
 .wpcf7 textarea:focus {
   border-bottom-color: #fff !important;
-  background: transparent !important;
   background-color: transparent !important;
 }
 

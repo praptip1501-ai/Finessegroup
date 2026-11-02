@@ -97,12 +97,12 @@ $services_data = finesse_get_services_explorer_data();
 		<div class="procbox">
 			<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 28px">
 				<p class="cap" id="procName" style="margin: 0; color: #A3A3A3"></p>
-				<button type="button" class="pill" data-act="play" id="playBtn"></button>
+				<button type="button" class="stagechip" data-act="play" id="playBtn"></button>
 			</div>
 			<div class="g-steps" id="steps" role="group" aria-label="<?php esc_attr_e( 'Process steps', 'workstation' ); ?>"></div>
 			<div class="g-stepdetail stepA" id="stepDetail">
 				<p class="chipin" id="stepText" style="margin: 0; font-size: clamp(20px, 2vw, 28px); font-weight: 300; line-height: 1.35; color: #fff"></p>
-				<a class="btn btn-w" href="<?php echo esc_url( $exp_quote_url ); ?>" style="white-space: nowrap; justify-self: end">
+				<a class="btn btn-w" id="expQuoteBtn" href="<?php echo esc_url( $exp_quote_url ); ?>" style="white-space: nowrap; justify-self: end">
 					<?php echo esc_html( $exp_quote_text ); ?>
 					<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
 						<path d="M1 8h13M9 3l5 5-5 5"></path>
