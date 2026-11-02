@@ -16,6 +16,11 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @param WP_Customize_Manager $wp_customize Customizer object.
  */
 function workstation_customize_register( $wp_customize ) {
+	if ( $wp_customize->get_section( 'title_tagline' ) ) {
+		$wp_customize->get_section( 'title_tagline' )->title       = esc_html__( 'Site Identity & Favicon', 'workstation' );
+		$wp_customize->get_section( 'title_tagline' )->description = esc_html__( 'Configure site title, tagline, logo, and browser favicon.', 'workstation' );
+	}
+
 	if ( $wp_customize->get_section( 'colors' ) ) {
 		$wp_customize->get_section( 'colors' )->title       = esc_html__( 'Brand Colors', 'workstation' );
 		$wp_customize->get_section( 'colors' )->description = esc_html__( 'Adjust the main theme palette used across the header, cards, links, buttons, and footer.', 'workstation' );

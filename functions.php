@@ -169,11 +169,14 @@ function workstation_enqueue_scripts() {
 add_action( 'wp_enqueue_scripts', 'workstation_enqueue_scripts' );
 
 /**
- * Enqueue editor styles for Gutenberg
+ * Enqueue editor assets for Gutenberg
  */
 function workstation_enqueue_block_editor_assets() {
-	$theme_version = wp_get_theme()->get( 'Version' );
-	wp_enqueue_style( 'workstation-editor-style', get_template_directory_uri() . '/style.css', array(), $theme_version, 'all' );
+	global $wp_customize;
+	// Do not enqueue in customizer controls or preview to avoid styling leaks in admin modals
+	if ( isset( $wp_customize ) || is_customize_preview() ) {
+		return;
+	}
 }
 add_action( 'enqueue_block_editor_assets', 'workstation_enqueue_block_editor_assets' );
 
@@ -413,3 +416,49 @@ function workstation_posted_on_single() {
 		$time_string
 	);
 }
+
+/**
+ * Render Favicon in document head for frontend, admin, and login screens.
+ */
+function workstation_favicon() {
+	$custom_favicon = get_theme_mod( 'finesse_favicon' );
+
+	if ( ! empty( $custom_favicon ) ) {
+		echo '<link rel="shortcut icon" href="' . esc_url( $custom_favicon ) . '">' . "\n";
+		echo '<link rel="icon" type="image/png" sizes="32x32" href="' . esc_url( $custom_favicon ) . '">' . "\n";
+		echo '<link rel="apple-touch-icon" href="' . esc_url( $custom_favicon ) . '">' . "\n";
+		return;
+	}
+
+	if ( has_site_icon() ) {
+		return;
+	}
+
+	$favicon_png = get_theme_file_uri( 'assets/images/favicon.png' );
+	$favicon_32  = get_theme_file_uri( 'assets/images/favicon-32x32.png' );
+	$favicon_16  = get_theme_file_uri( 'assets/images/favicon-16x16.png' );
+	$apple_icon  = get_theme_file_uri( 'assets/images/apple-touch-icon.png' );
+
+	echo '<link rel="shortcut icon" href="' . esc_url( $favicon_png ) . '">' . "\n";
+	echo '<link rel="icon" type="image/png" sizes="32x32" href="' . esc_url( $favicon_32 ) . '">' . "\n";
+	echo '<link rel="icon" type="image/png" sizes="16x16" href="' . esc_url( $favicon_16 ) . '">' . "\n";
+	echo '<link rel="apple-touch-icon" href="' . esc_url( $apple_icon ) . '">' . "\n";
+}
+add_action( 'wp_head', 'workstation_favicon', 2 );
+add_action( 'admin_head', 'workstation_favicon', 2 );
+add_action( 'login_head', 'workstation_favicon', 2 );
+
+/**
+ * Synchronize customizer favicon with WordPress core site_icon option when updated.
+ */
+function workstation_sync_customizer_favicon() {
+	$favicon_url = get_theme_mod( 'finesse_favicon' );
+	if ( ! empty( $favicon_url ) ) {
+		$attach_id = attachment_url_to_postid( $favicon_url );
+		if ( $attach_id ) {
+			update_option( 'site_icon', $attach_id );
+		}
+	}
+}
+add_action( 'customize_save_after', 'workstation_sync_customizer_favicon' );
+

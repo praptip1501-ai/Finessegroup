@@ -81,7 +81,7 @@ $letters = mb_str_split( $hero_word );
 				<a class="btn btn-w" href="<?php echo esc_url( $btn1_url ); ?>"><?php echo esc_html( $btn1_text ); ?></a>
 			<?php endif; ?>
 			<?php if ( $btn2_text ) : ?>
-				<a class="btn" href="<?php echo esc_url( $btn2_url ); ?>" style="color: #fff"><?php echo esc_html( $btn2_text ); ?></a>
+				<a class="btn btn-b rv in-view" href="<?php echo esc_url( $btn2_url ); ?>" style="color: #fff"><?php echo esc_html( $btn2_text ); ?></a>
 			<?php endif; ?>
 		</div>
 	</div>

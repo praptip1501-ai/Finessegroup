@@ -22,6 +22,27 @@ function finesse_customize_register( $wp_customize ) {
 		'priority'    => 25,
 	) );
 
+	// Favicon & Site Icon Section
+	$wp_customize->add_section( 'finesse_favicon_section', array(
+		'title'       => esc_html__( 'Favicon & Site Icon', 'workstation' ),
+		'panel'       => 'finesse_panel',
+		'priority'    => 2,
+		'description' => esc_html__( 'Upload or customize the favicon displayed in browser tabs, bookmarks, and mobile shortcuts.', 'workstation' ),
+	) );
+
+	$wp_customize->add_setting( 'finesse_favicon', array(
+		'default'           => get_theme_file_uri( 'assets/images/favicon.png' ),
+		'sanitize_callback' => 'esc_url_raw',
+		'transport'         => 'refresh',
+	) );
+
+	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'finesse_favicon', array(
+		'label'       => esc_html__( 'Favicon Image', 'workstation' ),
+		'description' => esc_html__( 'Upload a square icon (recommended 512 &times; 512 PNG or ICO) for browser tabs and mobile devices.', 'workstation' ),
+		'section'     => 'finesse_favicon_section',
+		'priority'    => 10,
+	) ) );
+
 	// 0. Header Navigation
 	$wp_customize->add_section( 'finesse_header_section', array(
 		'title'    => esc_html__( 'Header Navigation', 'workstation' ),
@@ -806,6 +827,127 @@ function finesse_customize_controls_styles() {
 		.wp-core-ui #customize-footer-actions .devices .devices__preview-label,
 		.wp-full-overlay-footer .devices .devices__preview-label {
 			display: none !important;
+		}
+
+		/* Fix WordPress Media Modal / Image Upload layout in Customizer */
+		.media-modal,
+		.media-frame {
+			font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif !important;
+		}
+
+		/* Reset modal header title */
+		.media-frame-title {
+			height: 50px !important;
+			line-height: 50px !important;
+		}
+		.media-frame-title h1 {
+			font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif !important;
+			font-size: 22px !important;
+			line-height: 50px !important;
+			margin: 0 !important;
+			padding: 0 16px !important;
+			font-weight: 600 !important;
+			color: #1d2327 !important;
+			letter-spacing: normal !important;
+		}
+		.media-frame-title .suggested-dimensions {
+			font-size: 13px !important;
+			font-weight: 400 !important;
+			color: #646970 !important;
+			line-height: 50px !important;
+			margin-right: 20px !important;
+		}
+
+		/* Fix modal navigation tabs (Upload files / Media Library) */
+		.media-frame-router {
+			top: 50px !important;
+			height: 36px !important;
+			margin: 0 !important;
+		}
+		.media-router {
+			top: 0 !important;
+			margin: 0 !important;
+			padding: 0 6px !important;
+		}
+		.media-router .media-menu-item,
+		.media-modal .media-router button.media-menu-item {
+			position: relative !important;
+			float: left !important;
+			min-height: auto !important;
+			height: 36px !important;
+			padding: 8px 10px 9px !important;
+			margin: 0 !important;
+			border: 0 !important;
+			border-bottom: 4px solid transparent !important;
+			border-radius: 0 !important;
+			background: transparent !important;
+			box-shadow: none !important;
+			transform: none !important;
+			color: #2c3338 !important;
+			font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif !important;
+			font-size: 14px !important;
+			font-weight: 600 !important;
+			line-height: 1.28571428 !important;
+			text-decoration: none !important;
+			cursor: pointer !important;
+			display: inline-block !important;
+			gap: 0 !important;
+		}
+		.media-router .media-menu-item:hover,
+		.media-modal .media-router button.media-menu-item:hover {
+			color: #2271b1 !important;
+			background: transparent !important;
+			box-shadow: none !important;
+			transform: none !important;
+		}
+		.media-router .media-menu-item.active,
+		.media-modal .media-router button.media-menu-item.active {
+			color: #1d2327 !important;
+			border-bottom-color: #2271b1 !important;
+			background: transparent !important;
+			box-shadow: none !important;
+			transform: none !important;
+		}
+
+		/* Fix modal search input and secondary toolbar */
+		.media-toolbar-secondary {
+			display: flex !important;
+			align-items: center !important;
+			gap: 8px !important;
+		}
+		.media-toolbar-secondary .media-search-input-label {
+			position: absolute !important;
+			width: 1px !important;
+			height: 1px !important;
+			padding: 0 !important;
+			margin: -1px !important;
+			overflow: hidden !important;
+			clip: rect(0, 0, 0, 0) !important;
+			border: 0 !important;
+			display: none !important;
+		}
+		.media-toolbar-secondary input[type="search"],
+		.media-toolbar-secondary .search {
+			width: 200px !important;
+			max-width: 200px !important;
+			min-height: 30px !important;
+			height: 30px !important;
+			padding: 0 8px !important;
+			margin: 0 !important;
+			border: 1px solid #8c8f94 !important;
+			border-radius: 4px !important;
+			background: #fff !important;
+			box-shadow: none !important;
+			color: #2c3338 !important;
+			font-size: 13px !important;
+			line-height: normal !important;
+			overflow: hidden !important;
+		}
+		.media-toolbar-secondary input[type="search"]:focus,
+		.media-toolbar-secondary .search:focus {
+			border-color: #2271b1 !important;
+			box-shadow: 0 0 0 1px #2271b1 !important;
+			outline: 2px solid transparent !important;
 		}
 	</style>
 	<?php

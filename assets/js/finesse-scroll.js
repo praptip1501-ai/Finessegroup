@@ -10,27 +10,29 @@
     const introHeading = document.querySelector('.intro-heading');
     if (introHeading) {
       const words = introHeading.querySelectorAll('.w');
-      if (words.length > 0) {
+      const totalWords = words.length;
+      if (totalWords > 0) {
         let ticking = false;
         function updateWordReveal() {
           const vh = window.innerHeight || document.documentElement.clientHeight;
-          words.forEach(function(w) {
-            const rect = w.getBoundingClientRect();
-            // Start revealing when word reaches 85% of viewport; fully bright at 52%
-            const startY = vh * 0.85;
-            const endY   = vh * 0.52;
-            if (rect.top >= startY) {
-              w.style.opacity = '0.18';
-              w.style.transform = 'translateY(2px)';
-            } else if (rect.top <= endY) {
-              w.style.opacity = '1';
-              w.style.transform = 'translateY(0)';
-            } else {
-              const p = (startY - rect.top) / (startY - endY);
-              const op = 0.18 + (p * 0.82);
-              w.style.opacity = op.toFixed(3);
-              w.style.transform = 'translateY(' + ((1 - p) * 2).toFixed(1) + 'px)';
-            }
+          const headingRect = introHeading.getBoundingClientRect();
+          // Start revealing when heading enters at 88% of viewport, fully bright by 40%
+          const startY = vh * 0.88;
+          const endY   = vh * 0.40;
+          const totalProgress = Math.min(Math.max((startY - headingRect.top) / (startY - endY), 0), 1);
+
+          words.forEach(function(w, idx) {
+            // Stagger each word across the scroll range for a genuine word-by-word reveal
+            const wordStart = (idx / totalWords) * 0.72;
+            const wordEnd   = wordStart + 0.28;
+            let p = (totalProgress - wordStart) / (wordEnd - wordStart);
+            p = Math.min(Math.max(p, 0), 1);
+
+            const op = (0.18 + (p * 0.82)).toFixed(3);
+            const ty = ((1 - p) * 3).toFixed(1);
+
+            w.style.opacity = op;
+            w.style.transform = 'translateY(' + ty + 'px)';
           });
           ticking = false;
         }

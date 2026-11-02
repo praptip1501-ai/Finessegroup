@@ -96,7 +96,7 @@ a.btn.btn-w:hover {
 }
 
 .fin a:hover {
-  color: #444;
+  color: #fff;
 }
 
 .wrap {
@@ -230,7 +230,7 @@ a.btn.btn-b,
 .btn-b:hover,
 a.btn.btn-b:hover,
 .fin a.btn.btn-b:hover {
-  background: transparent !important;
+  background: #fff !important;
   color: #000 !important;
   border-color: #000 !important;
 }
@@ -370,12 +370,6 @@ a.btn.btn-b:hover,
     animation-range: entry 0% entry 85%;
   }
 
-  .fx .w {
-    animation: wf linear both;
-    animation-timeline: view();
-    animation-range: entry 30% cover 42%;
-  }
-
   .fx .clip {
     animation: clip linear both;
     animation-timeline: view();
@@ -493,6 +487,7 @@ a.btn.btn-b:hover,
   border-radius: 0;
   box-shadow: none;
 }
+
 .fin button:not(.btn):not(.pill):hover {
   box-shadow: none;
   transform: none;
