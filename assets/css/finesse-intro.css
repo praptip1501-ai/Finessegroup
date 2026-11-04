@@ -43,6 +43,8 @@
   color: #4A4A4A;
 }
 
+
+
 .g-pics {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
@@ -87,5 +89,9 @@
 
   .g-pics .img-box {
     height: 400px !important;
+  }
+
+  .clip.in-view {
+    height: 500px !important;
   }
 }

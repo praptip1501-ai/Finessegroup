@@ -1213,6 +1213,7 @@ figcaption {
 
   .main-navigation {
     width: 100%;
+    display: none;
   }
 
   .menu-toggle {

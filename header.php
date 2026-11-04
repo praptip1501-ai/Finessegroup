@@ -127,11 +127,5 @@ $header_btn_url  = get_theme_mod( 'finesse_header_btn_url', '#contact' );
 			<?php
 		}
 		?>
-
-		<?php if ( $header_btn_text ) : ?>
-			<div class="mobile-cta-wrap" style="margin-top: 16px;">
-				<a class="btn btn-w" href="<?php echo esc_url( $header_btn_url ); ?>" style="width: 100%; min-height: 44px; text-align: center; justify-content: center;"><?php echo esc_html( $header_btn_text ); ?></a>
-			</div>
-		<?php endif; ?>
 	</div>
 </header>

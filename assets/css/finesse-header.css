@@ -67,7 +67,7 @@ a.btn.btn-w {
   height: 100%;
 }
 
-.navlinks > li {
+.navlinks>li {
   position: relative;
   margin: 0;
   padding: 24px 0;
@@ -90,7 +90,7 @@ a.btn.btn-w {
   opacity: 1;
 }
 
-.navlinks > li > a::after {
+.navlinks>li>a::after {
   content: "";
   position: absolute;
   left: 0;
@@ -103,19 +103,19 @@ a.btn.btn-w {
   transition: transform .5s cubic-bezier(.2, .7, .1, 1);
 }
 
-.navlinks > li:hover > a::after {
+.navlinks>li:hover>a::after {
   transform: scaleX(1);
   transform-origin: left;
 }
 
 /* Submenu Dropdown Indicator */
-.navlinks > li.menu-item-has-children > a {
+.navlinks>li.menu-item-has-children>a {
   display: inline-flex;
   align-items: center;
   gap: 6px;
 }
 
-.navlinks > li.menu-item-has-children > a::before {
+.navlinks>li.menu-item-has-children>a::before {
   content: "";
   display: inline-block;
   width: 5px;
@@ -130,7 +130,7 @@ a.btn.btn-w {
   opacity: 0.7;
 }
 
-.navlinks > li.menu-item-has-children:hover > a::before {
+.navlinks>li.menu-item-has-children:hover>a::before {
   transform: rotate(-135deg);
   margin-top: 3px;
   opacity: 1;
@@ -157,8 +157,8 @@ a.btn.btn-w {
   z-index: 100;
 }
 
-.navlinks li.menu-item-has-children:hover > .sub-menu,
-.navlinks li.menu-item-has-children:focus-within > .sub-menu {
+.navlinks li.menu-item-has-children:hover>.sub-menu,
+.navlinks li.menu-item-has-children:focus-within>.sub-menu {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
@@ -239,13 +239,14 @@ a.btn.btn-w {
   background: none;
   border: 0;
   cursor: pointer;
-  padding: 8px;
   color: #fff;
 }
 
 .fin-menu-toggle svg {
   display: block;
   stroke: #fff;
+  width: 30px;
+  height: 30px;
 }
 
 /* Mobile Navigation Overlay */
@@ -320,11 +321,6 @@ a.btn.btn-w {
 
   .fin-menu-toggle {
     display: block;
-  }
-}
-
-@media (max-width: 480px) {
-  .bar-cta {
-    display: none;
+    padding: 0;
   }
 }
