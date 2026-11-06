@@ -60,7 +60,6 @@ body {
 .hero .wm,
 .hero .wmrow,
 .hero .ltr,
-.hero .sub,
 .hero .tagl,
 .explorer-section,
 .explorer-section h2,
@@ -81,6 +80,10 @@ body {
 .fin-footer h2,
 .fin-footer h3 {
   color: #E6E6E6 !important;
+}
+
+.hero .sub {
+  color: #fff;
 }
 
 .heroin h1 {
