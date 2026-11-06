@@ -268,9 +268,9 @@
 }
 
 @media (max-width: 960px) {
-  .hero {
+  /* .hero {
     height: 780px;
-  }
+  } */
 
   .tagl {
     gap: 8px;
